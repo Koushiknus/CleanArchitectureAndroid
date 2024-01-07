@@ -3,15 +3,19 @@ package com.example.samplelogin.db
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
+import androidx.room.Update
 
 @Dao
 interface NoteDao {
     @Insert
-    fun addNote(note: Note)
+    suspend fun addNote(note: Note)
 
-    @Query("Select * from note")
-    fun getAllNotes() : List<Note>
+    @Query("Select * from note ORDER BY id DESC")
+    suspend fun getAllNotes() : List<Note>
 
     @Insert
-    fun addMultipleNotes(vararg note: Note)
+    suspend fun addMultipleNotes(vararg note: Note)
+
+    @Update
+    suspend fun updateNote(note: Note)
 }
