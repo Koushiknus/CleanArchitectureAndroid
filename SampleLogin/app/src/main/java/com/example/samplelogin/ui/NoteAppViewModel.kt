@@ -11,7 +11,7 @@ import kotlinx.coroutines.launch
 class NoteAppViewModel(private val noteAppRepository: NoteAppRepository) : ViewModel() {
 
     private val _getAllNotes = MutableLiveData<List<Note>>()
-      val getAllNotes : LiveData<List<Note>>
+      val allNotes : LiveData<List<Note>>
           get() = _getAllNotes
 
     fun addNote(note: Note) = viewModelScope.launch {
